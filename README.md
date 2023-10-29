@@ -6,11 +6,14 @@ all the translated words are unicode characters. yes<br>
 should i translate numbers, too?
 
 ### todo
+translate all:
 - [x] arithmetic operators
 - [x] comparison operators
 - [x] bitwise operators
 - [x] assignment operators
 - [x] logical operators
-- [ ] translate all remaining keywords in [cppreference.com](https://en.cppreference.com/w/cpp/keyword)
-- [ ] sort in lexicographic order
-- [ ] nerd font keywords lol
+- [ ] keywords
+- [ ] data type
+other:
+- [ ] sort keywords in lexicographic order
+- [ ] use nerd font for keywords lol
