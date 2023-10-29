@@ -15,19 +15,20 @@
     #define nhân_thêm *=
     #define chia_thêm /=
     #define chia_lấy_dư_thêm %=
-    // more_here
+    #define đẩy_bit_qua_bên_phải_thêm >>=
+    #define đẩy_bit_qua_bên_trái_thêm <<=
+    #define và_bit_thêm &=
+    #define hoặc_bit_thêm |=
+    #define đảo_bit_thêm ~=
+    #define không_giống_bit_thêm ^=
 
     // bitwise operators
     #define đẩy_bit_qua_bên_phải >>
-    #define đẩy_bit_qua_bên_phải_thêm >>=
     #define đẩy_bit_qua_bên_trái <<
-    #define đẩy_bit_qua_bên_trái_thêm <<=
     #define và_bit &
     #define hoặc_bit |
     #define đảo_bit ~ 
-    #define hoặc_không_giống_bit ^
-
-    // more_here
+    #define không_giống_bit ^
 
     // comparison operators
     #define bằng ==
