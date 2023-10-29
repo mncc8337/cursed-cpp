@@ -71,6 +71,7 @@
     #define công public 
     #define tự_động auto
     #define đi_đến goto
+    #define nhãn label
     #define được_bảo_vệ protected
     #define hợp_nhất union
     #define ném_trả throw
@@ -86,7 +87,7 @@
 
     // data types
     #define số_nguyên int
-    #deifne số_nguyên_nhỏ short int
+    #define số_nguyên_nhỏ short int
     #define số_nguyên_lớn long long
     #define số_nguyên_dương unsigned int
     #define số_thực float
