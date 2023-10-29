@@ -10,3 +10,4 @@ should i translate numbers, too?
 - [x] comparison operators
 - [ ] translate all remaining keywords in [cppreference.com](https://en.cppreference.com/w/cpp/keyword)
 - [ ] sort in lexicographic order
+- [ ] nerd font keywords lol
