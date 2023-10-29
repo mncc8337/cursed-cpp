@@ -8,6 +8,9 @@ should i translate numbers, too?
 ### todo
 - [x] arithmetic operators
 - [x] comparison operators
+- [x] bitwise operators
+- [x] assignment operators
+- [x] logical operators
 - [ ] translate all remaining keywords in [cppreference.com](https://en.cppreference.com/w/cpp/keyword)
 - [ ] sort in lexicographic order
 - [ ] nerd font keywords lol
