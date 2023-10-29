@@ -25,7 +25,7 @@
     #define và_bit &
     #define hoặc_bit |
     #define đảo_bit ~ 
-    #define hoặc_không_cùng_bit ^
+    #define hoặc_không_giống_bit ^
 
     // more_here
 
