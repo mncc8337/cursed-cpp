@@ -24,8 +24,8 @@
     #define đẩy_bit_qua_bên_trái_thêm <<=
     #define và_bit &
     #define hoặc_bit |
-    #define phủ_định_bit ~ 
-    #define hoặc_bit_loại_trừ ^
+    #define đảo_bit ~ 
+    #define hoặc_không_cùng_bit ^
 
     // more_here
 
@@ -47,6 +47,7 @@
 #endif
 
 #ifdef VIETNAMESE_KEYWORDS
+
     // keywords
     #define trong_khi while
     #define cho for
@@ -80,8 +81,9 @@
     #define nhập import
     #define kiểu_mẫu template
     #define rõ_ràng explicit
-    #define liệt_kê enum
+    #define đánh_số enum
     #define phép_toán operator 
+
     // data types
     #define số_nguyên int
     #deifne số_nguyên_nhỏ short int
@@ -95,7 +97,6 @@
     #define đúng_sai bool
     #define ĐÚNG true
     #define SAI false
-    
     #define vô_định void
 
 #endif
