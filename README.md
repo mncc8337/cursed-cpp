@@ -13,7 +13,7 @@ translate all:
 - [x] assignment operators
 - [x] logical operators
 - [ ] keywords
-- [ ] data type
+- [ ] data type<br>
 other:
 - [ ] sort keywords in lexicographic order
-- [ ] use nerd font for keywords lol
+- [ ] use nerd font for keywords lol<br>
