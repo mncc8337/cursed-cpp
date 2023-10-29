@@ -22,6 +22,11 @@
     #define đẩy_bit_qua_bên_phải_thêm >>=
     #define đẩy_bit_qua_bên_trái <<
     #define đẩy_bit_qua_bên_trái_thêm <<=
+    #define và_bit &
+    #define hoặc_bit |
+    #define đảo_bit ~ 
+    #define hoặc_không_giống_bit ^
+
     // more_here
 
     // comparison operators
@@ -42,6 +47,7 @@
 #endif
 
 #ifdef VIETNAMESE_KEYWORDS
+
     // keywords
     #define trong_khi while
     #define cho for
@@ -60,20 +66,40 @@
     #define trả_về return
     #define dùng using
     #define không_gian_tên namespace
+    #define tư private
+    #define ảo virtual
+    #define công public 
+    #define tự_động auto
+    #define đi_đến goto
+    #define nhãn label
+    #define được_bảo_vệ protected
+    #define hợp_nhất union
+    #define ném_trả throw
+    #define tĩnh static
+    #define nội_tuyến inline
+    #define bên_ngoài extern
+    #define xuất export
+    #define nhập import
+    #define kiểu_mẫu template
+    #define rõ_ràng explicit
+    #define đánh_số enum
+    #define phép_toán operator 
 
     // data types
     #define số_nguyên int
+    #define số_nguyên_nhỏ short int
     #define số_nguyên_lớn long long
     #define số_nguyên_dương unsigned int
     #define số_thực float
     #define số_thực_lớn long double
     #define kí_tự char
+    #define kí_tự_rộng wchar_t
     #define xâu std::string
     #define đúng_sai bool
     #define ĐÚNG true
     #define SAI false
-    #define tự_động auto
     #define vô_định void
+
 #endif
 
 #ifdef VIETNAMESE_MISC
