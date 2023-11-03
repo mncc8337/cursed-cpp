@@ -85,7 +85,21 @@
     #define rõ_ràng explicit
     #define đánh_số enum
     #define phép_toán operator 
-
+    #define bạn friend
+    #define khái_niệm concept
+    #define định_nghĩa_dạng typedef
+    #define thông_tin_dạng typeid 
+    #define tên_dạng typename
+    #define ghi_đè override 
+    #define mô_đun module
+    #define cuối_cùng final
+    #define kích_cỡ_của sizeof
+    #define bay_màu volatile
+    #define nghịch compl
+    #define không_ngoại_trừ noexcept 
+    #define luồng_cục_bộ thread_local
+   //exprimental kws
+   #define đồng_bộ_hóa synchronized 
     // data types
     #define số_nguyên int
     #define số_nguyên_nhỏ short int
@@ -100,6 +114,8 @@
     #define ĐÚNG true
     #define SAI false
     #define vô_định void
+    #define biến_đổi mutable
+    #define con_trỏ_rỗng nullptr
 
 #endif
 
