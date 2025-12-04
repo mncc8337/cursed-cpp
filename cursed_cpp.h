@@ -49,7 +49,6 @@
 #endif
 
 #ifdef VIETNAMESE_KEYWORDS
-
     // keywords
     #define trong_khi while
     #define cho for
@@ -117,7 +116,36 @@
     #define vô_định void
     #define biến_đổi mutable
     #define con_trỏ_rỗng nullptr
+#endif
 
+#ifdef VIETNAMESE_OBJECTS
+    // streams
+    #define kí_tự_đầu_vào cin
+    #define kí_tự_rộng_đầu_vào wcin
+    #define kí_tự_đầu_ra cout
+    #define kí_tự_rộng_đầu_ra wcout
+    #define kí_tự_lỗi cerr
+    #define kí_tự_rộng_lỗi wcerr
+#endif
+
+#ifdef VIETNAMESE_STANDARD_LIBS
+    // algorithm
+    // https://en.cppreference.com/w/cpp/header/algorithm.html
+    #define tất_cả_trong all_of
+    #define tồn_tại_trong any_of
+    #define không_tồn_tại_trong none_of
+    #define với_mỗi for_each
+    #define với_mỗi_n for_each_n
+    #define đếm count
+    #define đếm_nếu count_if
+    #define không_khớp mismatch
+    #define tìm find
+    #define tìm_nếu find_if
+    #define tìm_nếu_không find_if_not
+    #define tìm_kết_thúc find_end
+    #define tìm_đầu_tiên find_first_of
+    #define tìm_kiếm search
+    #define tìm_kiếm_n search_n
 #endif
 
 #ifdef VIETNAMESE_MISC
