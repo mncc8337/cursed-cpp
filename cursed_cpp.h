@@ -1,10 +1,9 @@
-// cursed-cpp: opt-in Vietnamese aliases for C++23.
+// c++ but you have to type more
 // SPDX-License-Identifier: MIT
-// See README.md for usage, the modules caveat, and compatibility changes.
-// Save this file and your source as UTF-8 with NFC-normalized identifiers.
-// Aliases are sorted by Unicode code point within each feature group.
-// There is deliberately no file-wide include guard: each feature has its own
-// guard, so a later inclusion can enable additional groups.
+// vietnamese aliases for c++23. yes, these are all macros.
+// utf-8 + nfc please. see README.md if the compiler starts complaining.
+// sorted by unicode code point inside each group. looks weird, still sorted.
+// each group gets its own guard so you can include this again for more macros.
 
 #if defined(VIETNAMESE_KEYWORDS) || defined(VIETNAMESE_TYPES)
 #include <cstddef>
@@ -19,6 +18,7 @@
 #include <algorithm>
 #endif
 // Vietnamese: operators
+// replacing one character with several words. efficiency.
 #if defined(VIETNAMESE_OPERATORS) && !defined(CURSED_CPP_VIETNAMESE_OPERATORS_INCLUDED)
 #define CURSED_CPP_VIETNAMESE_OPERATORS_INCLUDED
 #define bé_hơn <
@@ -59,11 +59,12 @@
 #endif // CURSED_CPP_VIETNAMESE_OPERATORS_INCLUDED
 
 // Vietnamese: keywords
+// the compiler gets the english version. you get this.
 #if defined(VIETNAMESE_KEYWORDS) && !defined(CURSED_CPP_VIETNAMESE_KEYWORDS_INCLUDED)
 #define CURSED_CPP_VIETNAMESE_KEYWORDS_INCLUDED
-// import/module aliases are spelling aids only; use literal module/import
-// (and export on module/import directives) for portable C++20+ modules.
-// register is reserved but cannot declare a variable in C++17+.
+// modules are annoying. use the actual module/import/export spellings on
+// module and import directives; expanding a macro won't portably create one.
+// register is still reserved. no, you can't use it for variables in c++17+.
 #define SAI false
 #define biến_đổi mutable
 #define biến_động volatile
@@ -150,6 +151,7 @@
 #endif // CURSED_CPP_VIETNAMESE_KEYWORDS_INCLUDED
 
 // Vietnamese: types
+// KEYWORDS brings these along too, like before.
 #if (defined(VIETNAMESE_TYPES) || defined(VIETNAMESE_KEYWORDS)) && !defined(CURSED_CPP_VIETNAMESE_TYPES_INCLUDED)
 #define CURSED_CPP_VIETNAMESE_TYPES_INCLUDED
 #define con_trỏ_rỗng_dạng std::nullptr_t
@@ -184,6 +186,7 @@
 #endif // CURSED_CPP_VIETNAMESE_TYPES_INCLUDED
 
 // Vietnamese: objects
+// cin, cout and friends. bring your own std::
 #if defined(VIETNAMESE_OBJECTS) && !defined(CURSED_CPP_VIETNAMESE_OBJECTS_INCLUDED)
 #define CURSED_CPP_VIETNAMESE_OBJECTS_INCLUDED
 #define kí_tự_ghi_nhật_kí clog
@@ -198,6 +201,7 @@
 #endif // CURSED_CPP_VIETNAMESE_OBJECTS_INCLUDED
 
 // Vietnamese: standard libs
+// a few algorithms. not the entire standard library lol
 #if defined(VIETNAMESE_STANDARD_LIBS) && !defined(CURSED_CPP_VIETNAMESE_STANDARD_LIBS_INCLUDED)
 #define CURSED_CPP_VIETNAMESE_STANDARD_LIBS_INCLUDED
 #define không_khớp mismatch
@@ -219,6 +223,7 @@
 #endif // CURSED_CPP_VIETNAMESE_STANDARD_LIBS_INCLUDED
 
 // Vietnamese: misc
+// main and std were apparently too readable
 #if defined(VIETNAMESE_MISC) && !defined(CURSED_CPP_VIETNAMESE_MISC_INCLUDED)
 #define CURSED_CPP_VIETNAMESE_MISC_INCLUDED
 #define chương_trình_chính main
