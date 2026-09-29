@@ -195,7 +195,7 @@ python3 tools/update_reference.py --check
 - [x] translate all keywords (C++23 spelling coverage; module caveat above)
 - [x] translate all data types (standard fundamental types)
 - [x] sort keywords in lexicographic order (within feature groups)
-- [ ] support other languages (intentionally deferred)
+- [ ] support other languages (nah)
 - [x] use nerd font for keywords lol (optional VS Code decorations)
 
 ## References
