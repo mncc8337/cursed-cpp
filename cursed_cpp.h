@@ -1,9 +1,8 @@
 // c++ but you have to type more
-// SPDX-License-Identifier: MIT
-// vietnamese aliases for c++23. yes, these are all macros.
-// utf-8 + nfc please. see README.md if the compiler starts complaining.
-// sorted by unicode code point inside each group. looks weird, still sorted.
-// each group gets its own guard so you can include this again for more macros.
+// vietnamese aliases for c++23. yes, these are all macros
+// see README.md if the compiler starts complaining
+// sorted by unicode code point inside each group. looks weird, still sorted
+// each group gets its own guard so you can include this again for more macros
 
 #if defined(VIETNAMESE_KEYWORDS) || defined(VIETNAMESE_TYPES)
 #include <cstddef>
@@ -63,8 +62,8 @@
 #if defined(VIETNAMESE_KEYWORDS) && !defined(CURSED_CPP_VIETNAMESE_KEYWORDS_INCLUDED)
 #define CURSED_CPP_VIETNAMESE_KEYWORDS_INCLUDED
 // modules are annoying. use the actual module/import/export spellings on
-// module and import directives; expanding a macro won't portably create one.
-// register is still reserved. no, you can't use it for variables in c++17+.
+// module and import directives; expanding a macro won't portably create one
+// register is still reserved. no, you can't use it for variables in c++17+
 #define SAI false
 #define biến_đổi mutable
 #define biến_động volatile
@@ -151,7 +150,7 @@
 #endif // CURSED_CPP_VIETNAMESE_KEYWORDS_INCLUDED
 
 // Vietnamese: types
-// KEYWORDS brings these along too, like before.
+// KEYWORDS brings these along too, like before
 #if (defined(VIETNAMESE_TYPES) || defined(VIETNAMESE_KEYWORDS)) && !defined(CURSED_CPP_VIETNAMESE_TYPES_INCLUDED)
 #define CURSED_CPP_VIETNAMESE_TYPES_INCLUDED
 #define con_trỏ_rỗng_dạng std::nullptr_t
