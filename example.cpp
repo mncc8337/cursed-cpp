@@ -183,12 +183,12 @@ vô_định dãy_fibonacci(số_nguyên max gán_bằng 5) {
 }
 
 số_nguyên chương_trình_chính() {
-    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "xin chào thế giới!\n";
+    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "xin chao the gioi [tones not supported >:( ]!\n";
 
-    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[1] primes <= 200. the normal part.\n";
+    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[1] cac so nguyen to <= 200\n";
     sàng_số_nguyên_tố(200);
 
-    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[2] a compile-time fold for 1 + ... + 5\n";
+    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[2] gap bieu thuc cho phep cong 1 + ... + 5\n";
     kí_tự_đầu_ra đẩy_bit_qua_bên_trái cộng_hết(1, 2, 3, 4, 5) đẩy_bit_qua_bên_trái '\n';
 
     kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[3] 2^100 mod 1000000007\n";
@@ -196,7 +196,7 @@ số_nguyên chương_trình_chính() {
     khẳng_định_tĩnh(đáp_án bằng số_khó_đọc{976371285});
     kí_tự_đầu_ra đẩy_bit_qua_bên_trái đáp_án đẩy_bit_qua_bên_trái '\n';
 
-    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[4] fibonacci, but it pauses after every number\n";
+    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[4] fibonacci\n";
     dãy_fibonacci(35);
 
     trả_về 0;
