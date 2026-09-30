@@ -47,17 +47,32 @@ operator precedence, same bugs in your program.
 | `VIETNAMESE_TYPES` | just the types |
 | `VIETNAMESE_OPERATORS` | arithmetic, assignment, comparison, logical and bitwise operators. `<=>` too |
 | `VIETNAMESE_OBJECTS` | stream names, like `std::kí_tự_đầu_ra` |
-| `VIETNAMESE_STANDARD_LIBS` | some `<algorithm>` names, like `std::tìm` |
+| `VIETNAMESE_STANDARD_LIBS` | library types grouped by header, plus some `<algorithm>` names like `std::tìm` |
 | `VIETNAMESE_MISC` | `thư_viện_chuẩn` and `chương_trình_chính` |
+| `VIETNAMESE_COROUTINES` | coroutine protocol names, like `lời_hứa` and `nhả_giá_trị`; include `<coroutine>` yourself |
 
 nothing turns on by itself. `VIETNAMESE_KEYWORDS` still includes types so old code
 doesn't suddenly forget what an integer is.
 
 the header brings in `<cstddef>` + `<string>` for types, `<iostream>` for streams,
-and `<algorithm>` for algorithms when needed. include your other headers first
+and `<algorithm>` for algorithms when needed. `VIETNAMESE_STANDARD_LIBS` also
+brings in the library-type headers. include your other headers first
 where possible. macros don't understand personal space.
 
-streams and algorithms still need `std::` or a suitable `using` declaration.
+library aliases are unqualified: `xâu` becomes `string`, and
+`con_trỏ_rỗng_dạng` becomes `nullptr_t`. use `std::xâu`, `std::con_trỏ_rỗng_dạng`,
+or a suitable `using` declaration, just like the streams and algorithms.
+the library types live in their own section, grouped by header. `VIETNAMESE_TYPES`
+and `VIETNAMESE_KEYWORDS` still enable them; `VIETNAMESE_STANDARD_LIBS` does too.
+
+```cpp
+#define VIETNAMESE_STANDARD_LIBS
+#include "cursed_cpp.h"
+
+std::xâu lời_chào = "xin chào thế giới!";
+std::con_trỏ_rỗng_dạng không_có_gì = nullptr;
+```
+
 you can enable another group and include the header again. each group has its own
 guard. `#undef VIETNAMESE_KEYWORDS` won't undo the aliases you already enabled.
 
@@ -66,7 +81,7 @@ guard. `#undef VIETNAMESE_KEYWORDS` won't undo the aliases you already enabled.
 - all 81 c++23 keyword spellings + the 11 alternative operator words (`and`, `or`, etc.).
   `final` and `override` are here too. modules have a catch, see below.
 - all standard fundamental types: the integers, signed/unsigned versions, character
-  types, floats, `void`, `bool`, and `std::nullptr_t`. `xâu` is `std::string` as a bonus.
+  types, floats, `void`, `bool`, and `std::nullptr_t`. `std::xâu` names `std::string` as a bonus.
 - the five operator groups in the table above. things like `[]`, `()`, `?:`, `.`
   and `->` still use their normal syntax. pointers, references and arrays do too.
 - aliases are sorted inside each group by unicode code point, using nfc text.
@@ -74,7 +89,7 @@ guard. `#undef VIETNAMESE_KEYWORDS` won't undo the aliases you already enabled.
 
 this is **c++23**, not every keyword ever invented. no promise about c++26,
 compiler-specific types, experimental keywords, or the entire standard library.
-the [full alias list](docs/aliases.md) is over there if you want to count them.
+the full alias list is in [cursed_cpp.h](cursed_cpp.h) if you want to count them.
 
 ### the annoying bits
 
@@ -91,75 +106,23 @@ same deal with `#include`, `#define`, etc. those stay as they are.
 `thanh_ghi` expands to `register`, which is still reserved but can't be used as a
 variable storage specifier in c++17+. having a translation doesn't bring it back.
 
-### nerd font lol
-
-there's an optional [VS Code thing](editors/vscode/README.md) that puts icons before
-the translated keywords, types and operators. the icons only live in the editor.
-your actual source, clipboard and compiler still get the Vietnamese words.
-
-1. install a [Nerd Font](https://www.nerdfonts.com/font-downloads), e.g. FiraCode Nerd Font.
-2. set your VS Code font to its installed family name:
-
-   ```json
-   {
-     "editor.fontFamily": "'FiraCode Nerd Font Mono', monospace"
-   }
-   ```
-
-3. run **Extensions: Install from VSIX...** and pick
-   `editors/vscode/cursed-cpp-nerd-font-0.1.0.vsix` from the full project.
-   only have the extension source? its readme has the run/package instructions.
-4. open a c++ file. **Cursed C++: Toggle Nerd Font Icons** turns it on/off.
-
-changing the font alone won't replace words with icons. most nerd font icons use
-private-use unicode characters, which aren't valid portable c++23 identifiers,
-so putting them in `#define` names wasn't going to end well.
-
-the extension skips comments, strings, character literals and preprocessor
-directive lines. it doesn't resolve symbols or evaluate `#if`, so an ordinary
-variable with the same name, or a word in an inactive branch, can get an icon too.
-
-### things that were a bit too cursed
-
-- `đảo_bit_thêm` was `~=`. that operator doesn't exist. use `x gán_bằng đảo_bit x`.
-- `nhãn` was `label`. also not a keyword. just write `name:`.
-- `đồng_bộ_hóa` was `synchronized`. experimental transactional-memory stuff, not standard c++23.
-- `và_bit_thêm` was defined twice. once is probably enough.
-
-those three bad/nonstandard aliases are gone; the other old aliases still work.
-`số_nguyên_dương` still means `unsigned int`, including zero. the name is doing its
-best. `số_nguyên_không_dấu` is the less misleading version. `số_nguyên_lớn` is still
-`long long`, and `số_thực_lớn` is still `long double`.
-
 ### does it even work
 
-from the full project root, with python 3.9+ and g++:
+build the included example directly. no extra scripts needed:
 
 ```sh
-python3 tests/run.py
+g++ -std=c++23 -Wall -Wextra -pedantic-errors example.cpp -o example
+./example
 ```
 
-set `CXX` if you want another compatible compiler. this checks keyword spellings,
-sorting, unicode normalization, feature flags, repeated includes, and c++20/c++23
-programs using the types, operators, concepts, casts and coroutines.
-module builds aren't covered.
+c++20 works too. on windows, build with `-o example.exe` and run `.\example.exe`.
+if VS Code complains about concepts or coroutines, check that IntelliSense and
+your actual compiler both use c++20 or newer.
 
-the icon thing has tests too. node.js 18+:
-
-```sh
-cd editors/vscode
-npm test
-```
-
-those check the scanner and a mocked editor. you still have to look at VS Code to
-see whether your installed font renders the icons. the tests do not have eyes.
-
-changed an alias? run these from the project root to update the list and editor vocabulary:
-
-```sh
-python3 tools/update_reference.py
-python3 tools/update_reference.py --check
-```
+save the source as utf-8. if Vietnamese output looks broken in windows cmd,
+run `chcp 65001` before the example and use a font with Vietnamese glyphs.
+with MSVC, also compile with `/utf-8`. changing the terminal doesn't change
+how an already-built executable encoded its strings.
 
 ### todo
 
@@ -172,7 +135,7 @@ python3 tools/update_reference.py --check
 - [x] translate all data types (standard fundamental types)
 - [x] sort keywords in lexicographic order (inside each group)
 - [ ] support other languages (nah)
-- [x] use nerd font for keywords lol (optional VS Code decorations)
+- [ ] use nerd font for keywords lol
 
 ### the boring links
 
@@ -180,9 +143,7 @@ python3 tools/update_reference.py --check
 [types](https://timsong-cpp.github.io/cppwp/n4950/basic.fundamental) ·
 [unicode rules](https://timsong-cpp.github.io/cppwp/n4950/lex.name) ·
 [module rules](https://timsong-cpp.github.io/cppwp/n4950/cpp.module) ·
-[import rules](https://timsong-cpp.github.io/cppwp/n4950/cpp.import) ·
-[editor decorations](https://code.visualstudio.com/api/references/vscode-api#DecorationRenderOptions) ·
-[nerd font glyphs](https://www.nerdfonts.com/cheat-sheet)
+[import rules](https://timsong-cpp.github.io/cppwp/n4950/cpp.import)
 
 ### license
 
