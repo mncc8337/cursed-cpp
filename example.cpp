@@ -13,6 +13,7 @@
 #define VIETNAMESE_KEYWORDS
 #define VIETNAMESE_OBJECTS
 #define VIETNAMESE_MISC
+#define VIETNAMESE_COROUTINES
 #include "cursed_cpp.h"
 
 dùng không_gian_tên thư_viện_chuẩn;
@@ -104,32 +105,31 @@ khẳng_định_tĩnh(số_vòng<7>{-1} cộng số_vòng<7>{2} bằng số_vòn
 
 lớp máy_nhả_số {
     công:
-        // the compiler wants these exact english names. i tried.
-        cấu_trúc promise_type {
+        cấu_trúc lời_hứa {
             số_nguyên_lớn hiện_tại gán_bằng 0;
             exception_ptr lỗi;
 
-            máy_nhả_số get_return_object() {
+            máy_nhả_số lấy_máy() {
                 trả_về máy_nhả_số{
-                    coroutine_handle<promise_type>::from_promise(*con_trỏ_này)
+                    coroutine_handle<lời_hứa>::from_promise(*con_trỏ_này)
                 };
             }
 
-            suspend_always initial_suspend() không_loại_trừ { trả_về {}; }
-            suspend_always final_suspend() không_loại_trừ { trả_về {}; }
+            suspend_always nghỉ_đầu() không_loại_trừ { trả_về {}; }
+            suspend_always nghỉ_cuối() không_loại_trừ { trả_về {}; }
 
-            suspend_always yield_value(số_nguyên_lớn n) không_loại_trừ {
+            suspend_always nhả_giá_trị(số_nguyên_lớn n) không_loại_trừ {
                 hiện_tại gán_bằng n;
                 trả_về {};
             }
 
-            vô_định return_void() không_loại_trừ {}
-            vô_định unhandled_exception() không_loại_trừ {
+            vô_định trả_về_rỗng() không_loại_trừ {}
+            vô_định lỗi_chưa_bắt() không_loại_trừ {
                 lỗi gán_bằng current_exception();
             }
         };
 
-        dùng tay_cầm = coroutine_handle<promise_type>;
+        dùng tay_cầm = coroutine_handle<lời_hứa>;
 
         rõ_ràng máy_nhả_số(tay_cầm h) không_loại_trừ : khung(h) {}
         máy_nhả_số(hằng_số máy_nhả_số&) = xóa;
@@ -159,7 +159,7 @@ lớp máy_nhả_số {
 
 máy_nhả_số fibonacci_lười(số_nguyên số_lượng) {
     nếu (số_lượng bé_hơn 0 hoặc số_lượng lớn_hơn 92) {
-        ném_trả out_of_range("0..92 thoi. long long cung co gioi han.");
+        ném_trả out_of_range("0 tới 92 thôi. long long cũng có giới hạn.");
     }
 
     số_nguyên_lớn a gán_bằng 0, b gán_bằng 1;
@@ -183,12 +183,16 @@ vô_định dãy_fibonacci(số_nguyên max gán_bằng 5) {
 }
 
 số_nguyên chương_trình_chính() {
-    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "xin chao the gioi [tones not supported >:( ]!\n";
+    #if defined(_WIN32) || defined(_WIN64)
+    system("chcp 65001 > nul"); // vietnamese support for binbows
+    #endif
 
-    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[1] cac so nguyen to <= 200\n";
+    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "xin chào thế giới!\n";
+
+    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[1] các số nguyên tố <= 200\n";
     sàng_số_nguyên_tố(200);
 
-    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[2] gap bieu thuc cho phep cong 1 + ... + 5\n";
+    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[2] gấp biểu thức cho phép cộng 1 + ... + 5\n";
     kí_tự_đầu_ra đẩy_bit_qua_bên_trái cộng_hết(1, 2, 3, 4, 5) đẩy_bit_qua_bên_trái '\n';
 
     kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[3] 2^100 mod 1000000007\n";
@@ -196,8 +200,8 @@ số_nguyên chương_trình_chính() {
     khẳng_định_tĩnh(đáp_án bằng số_khó_đọc{976371285});
     kí_tự_đầu_ra đẩy_bit_qua_bên_trái đáp_án đẩy_bit_qua_bên_trái '\n';
 
-    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[4] fibonacci\n";
-    dãy_fibonacci(35);
+    kí_tự_đầu_ra đẩy_bit_qua_bên_trái "\n[4] 50 số fibonacci\n";
+    dãy_fibonacci(50);
 
     trả_về 0;
 }
