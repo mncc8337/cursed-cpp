@@ -2,9 +2,8 @@
 // vietnamese aliases for c++23. yes, these are all macros
 // see README.md if the compiler starts complaining
 // sorted by unicode code point inside each group. looks weird, still sorted
-// each group gets its own guard so you can include this again for more macros
 
-#if defined(VIETNAMESE_KEYWORDS) || defined(VIETNAMESE_TYPES)
+#if defined(VIETNAMESE_KEYWORDS) || defined(VIETNAMESE_TYPES) || defined(VIETNAMESE_STANDARD_LIBS)
 #include <cstddef>
 #include <string>
 #endif
@@ -58,11 +57,8 @@
 #endif // CURSED_CPP_VIETNAMESE_OPERATORS_INCLUDED
 
 // Vietnamese: keywords
-// the compiler gets the english version. you get this.
 #if defined(VIETNAMESE_KEYWORDS) && !defined(CURSED_CPP_VIETNAMESE_KEYWORDS_INCLUDED)
 #define CURSED_CPP_VIETNAMESE_KEYWORDS_INCLUDED
-// modules are annoying. use the actual module/import/export spellings on
-// module and import directives; expanding a macro won't portably create one
 // register is still reserved. no, you can't use it for variables in c++17+
 #define SAI false
 #define biến_đổi mutable
@@ -150,10 +146,8 @@
 #endif // CURSED_CPP_VIETNAMESE_KEYWORDS_INCLUDED
 
 // Vietnamese: types
-// KEYWORDS brings these along too, like before
 #if (defined(VIETNAMESE_TYPES) || defined(VIETNAMESE_KEYWORDS)) && !defined(CURSED_CPP_VIETNAMESE_TYPES_INCLUDED)
 #define CURSED_CPP_VIETNAMESE_TYPES_INCLUDED
-#define con_trỏ_rỗng_dạng std::nullptr_t
 #define có_dấu signed
 #define dài long
 #define không_dấu unsigned
@@ -179,13 +173,20 @@
 #define số_thực_kép double
 #define số_thực_lớn long double
 #define vô_định void
-#define xâu std::string
 #define đúng_sai bool
 
 #endif // CURSED_CPP_VIETNAMESE_TYPES_INCLUDED
 
+// Vietnamese: library types
+#if (defined(VIETNAMESE_STANDARD_LIBS) || defined(VIETNAMESE_TYPES) || defined(VIETNAMESE_KEYWORDS)) && !defined(CURSED_CPP_VIETNAMESE_LIBRARY_TYPES_INCLUDED)
+#define CURSED_CPP_VIETNAMESE_LIBRARY_TYPES_INCLUDED
+// <cstddef>
+#define con_trỏ_rỗng_dạng nullptr_t
+// <string>
+#define xâu string
+#endif // CURSED_CPP_VIETNAMESE_LIBRARY_TYPES_INCLUDED
+
 // Vietnamese: objects
-// cin, cout and friends. bring your own std::
 #if defined(VIETNAMESE_OBJECTS) && !defined(CURSED_CPP_VIETNAMESE_OBJECTS_INCLUDED)
 #define CURSED_CPP_VIETNAMESE_OBJECTS_INCLUDED
 #define kí_tự_ghi_nhật_kí clog
@@ -200,7 +201,6 @@
 #endif // CURSED_CPP_VIETNAMESE_OBJECTS_INCLUDED
 
 // Vietnamese: standard libs
-// a few algorithms. not the entire standard library lol
 #if defined(VIETNAMESE_STANDARD_LIBS) && !defined(CURSED_CPP_VIETNAMESE_STANDARD_LIBS_INCLUDED)
 #define CURSED_CPP_VIETNAMESE_STANDARD_LIBS_INCLUDED
 #define không_khớp mismatch
@@ -230,3 +230,15 @@
 
 #endif // CURSED_CPP_VIETNAMESE_MISC_INCLUDED
 
+#if defined(VIETNAMESE_COROUTINES) && !defined(CURSED_CPP_VIETNAMESE_COROUTINES_INCLUDED)
+#define CURSED_CPP_VIETNAMESE_COROUTINES_INCLUDED
+
+#define lấy_máy get_return_object
+#define lỗi_chưa_bắt unhandled_exception
+#define lời_hứa promise_type
+#define nghỉ_cuối final_suspend
+#define nghỉ_đầu initial_suspend
+#define nhả_giá_trị yield_value
+#define trả_về_rỗng return_void
+
+#endif // CURSED_CPP_VIETNAMESE_COROUTINES_INCLUDED
